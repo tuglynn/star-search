@@ -1,0 +1,22 @@
+<div class="search-bar">
+    <form (submit)="apiFetch(searchQuery.value, typeOfSearch.value, $event); searchQuery.value=''">
+    <select name="typeOfSearch" #typeOfSearch>
+        <option value="people">People</option>
+        <option value="films">Film</option>
+        <option value="planets" disabled>Planets</option>
+        <option value="species" disabled>Species</option>
+        <option value="starships" disabled>Starships</option>
+        <option value="vehicles" disabled>Vehicles</option>
+    </select>
+    <input type="text" #searchQuery placeholder="search the galaxy" required autofocus/>
+    <button>Engage the hyperdrive</button>
+</form>
+</div>
+<div *ngIf="hasUserQuery">
+    <ng-container *ngIf="category === 'people'; else filmSearch">
+        <app-results [response]="response" [hasData]="hasData" [isTimedOut]="isTimedOut"></app-results>
+    </ng-container>
+    <ng-template #filmSearch>
+        <app-film-results [response]="response" [hasData]="hasData" [isTimedOut]="isTimedOut"></app-film-results>
+    </ng-template>
+</div>

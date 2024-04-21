@@ -1,0 +1,10 @@
+<div class="results">
+    <div *ngIf="!isTimedOut; else noResults">
+        <h5>loading...</h5>
+        <img id="loader" src="../../assets/falcon-sprite.png" alt="">
+    </div>
+    <ng-template #noResults>
+        <h5>Sorry, your search didn't return any results. Please try a different query.</h5>
+        <img id="deathstar" src="../../assets/deathstar-sprite.png" alt="">
+    </ng-template>
+</div>

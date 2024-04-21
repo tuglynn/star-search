@@ -1,0 +1,13 @@
+<div class="results" *ngIf="hasData && response !== undefined; else loading">
+    <h3>Search results:</h3>
+    <h4>{{response.title}}</h4>
+    <ul>
+        <li>Episode {{response.episode_id}}</li>
+        <li>Directed by {{response.director}}</li>
+    </ul>
+    <h4><a href="" (click)="toggleCrawl($event)">{{response.title}}'s opening crawl</a></h4>
+    <p [style.display]="isCrawlVisible ? 'block' : 'none'">{{response.opening_crawl.toLowerCase()}}</p>
+</div>
+<ng-template #loading>
+    <app-loading [isTimedOut]="isTimedOut"></app-loading>
+</ng-template>
